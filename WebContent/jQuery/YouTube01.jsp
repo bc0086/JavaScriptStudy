@@ -10,25 +10,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
  <!-- 
- 	$(selector).
-		선택자의 속성이 될 수 있는 것
+ 	선택자 : $(selector).
+		selector의 속성이 될 수 있는 것
 			1. #id
 			2. .class
 			3. tag[name=txt] 
 				- tag는 input, select, table, div, span [id, name]
-	
-	.attr() : input의 태그들의 속성을 추가해주는 기능
 -->
+
 <script>
 	// jQuery의 이벤트를 사용하기 위한 방법 1 
 	$(function(){ 
+		
 		$("#btn").click(function(){
 			
+			// .val() : 속성으로 value를 가지고 있는 tag사용시
 			var txt = $("#btn").val();
-				// .val() : 속성으로 value를 가지고 있는 tag사용시
-				// .text() : tag의 열고 닫기 사이의 값
-				// .html() : .text()와 달리 tag까지 다 가져온다. 
-					// 클릭했을 때 대분류 중분류 소분류 표현할 시 html().html() 이런식으로 사용
 			alert('#id(btn)의 결과1 : ' + txt);
 
 			var txt = $("#txt").val();
@@ -38,8 +35,9 @@
 			alert('.class의 결과 : '+ txt);
 			
 			var txt = $("select[id=sel]").val();
-			alert('tag[name=txt]의 결과 : ' + txt);			
+			alert('tag[name=txt]의 결과 : ' + txt);
 			
+			// .text() : tag의 열고 닫기 사이의 값
 			var txt = $("#dv").text();
 			alert('#dv의 .text()의 결과 : ' + txt);
 			
@@ -50,18 +48,21 @@
 			alert('#tr 의 결과 : ' + txt);
 			
 			$("#dv").text("<input>");
+			
+			// .html() : .text()와 달리 tag까지 다 가져온다. 
+				// 클릭했을 때 대분류 중분류 소분류 표현할 시 html().html() 이런식으로 사용
 			$("#dv1").html("<input>");
 			
+			// selector가 똑같을 때 .eq()를 사용하면 해당 부분의 값을 가져올 수 있다.
 			var txt = $("table tr td").eq(2).text();
-				// selector가 똑같을 때 .eq()를 사용하면 해당 부분의 값을 가져올 수 있다.
 			alert('table tr td의 eq(2)의 결과 : ' + txt);
 		})
 	})
 	
 	// jQuery의 이벤트를 사용하기 위한 방법 2
-//	$(document).ready(function(){
+	$(document).ready(function(){
 		
-//	})
+	})
 </script>
 </head>
 

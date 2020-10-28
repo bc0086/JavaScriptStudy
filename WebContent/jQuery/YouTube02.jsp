@@ -12,34 +12,38 @@
 
 <script>
 	$(function(){ 
+		// .click() : 버튼을 클릭했을 때 이벤트가 발생하는 기능
 		$("#btn").click(function(){
-			$("#txt").attr("class", "txt");
-				// .attr() : input태그들의 속성을 추가해주는 기능
 			
+			// .attr() : input태그들의 속성을 추가해주는 기능
+			$("#txt").attr("class", "txt");
+			
+			// .prop() : .attr()과 달리 속성이 추가되지는 않지만 이벤트 동작은 하는 기능
 			$("#chk").prop("checked", true);
-				// .prop() : .attr()과 달리 속성이 추가되지는 않지만 이벤트 동작은 하는 기능
 				
+			// .is() : checked가 true인지 false인지 boolean타입으로 결정하는 기능
 			if ($("#chk").is(":checked")){
-				// .is() : checked가 true인지 false인지 boolean타입으로 결정하는 기능
 				alert("11111");				
 			} else {
 				alert("22222");
 			};
-			
 		}) 
 		
+		// .blur() : 포커스가 해당범위를 벗어났을때 이벤트 발생하는 기능
 		$("#txt").blur(function(){
-			// .blur() : 포커스가 해당범위를 벗어났을때 이벤트 발생하는 기능
 			alert("test");
 		})
 		
+		// .keyup() : 키를 눌렀다가 땠을때 이벤트가 발생하는 기능
 		$("#txt").keyup(function(){
-			// .keyup() : 키를 눌렀다가 땠을때 이벤트가 발생하는 기능
 			alert("test");
 		})
-		
 	})
+	
+	// tag안에 있는 onclick속성을 이용할 때...
+	function fncClick(){
 		
+	}
 </script>
 <style>
 	.txt{
