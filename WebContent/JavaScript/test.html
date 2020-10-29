@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do it!</title>
+    <script>        
+        // document.write() : print문과 같은 기능.
+        // = window.document.write() 와 같은 기능.
+            // document : 객체
+            // . : 접근자
+            // write(데이터) : document의 메소드 중 하나
+        document.write("say hello", "<br>"); 
+        document.write('say "hello"', "<br>");
+        document.write("say \"hello\"", "<br>");
+
+        // prompt() : 질의 응답창을 띄우는 기능
+        var num = prompt("숫자를 입력하세요.", '0');
+            // 입력한 숫자로 반환이 된다.
+        result = num % 2 == 0 ? '짝수' : '홀수';
+            // 삼항연산자 : 조건식? 실행1 : 실행2
+        document.write(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

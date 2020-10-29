@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체 생성</title>
+    <script>
+        // 1. new키워드로 객체 생성하기
+        var car = new Object();
+        car.color = 'white';
+        car.price = '1000만원';
+        car.getInfo = function(){
+            document('색상 : ', this.color);
+            document('가격 : ', this.price);
+        }
+
+        // 2. 리터럴 방식으로 객체 생성하기
+        var car = {
+            'color' : 'white',
+            'price' : '1000만원',
+            'getInfo' : function(){
+                스크립트코드
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
