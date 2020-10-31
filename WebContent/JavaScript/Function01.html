@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <script>
+        function greeting(name, area){
+            document.write('hello '+ name, '<br>');
+            document.write('welcome to '+ area, '<br>');
+        }        
+        greeting('홍길동', 'korea');
+        greeting('홍대리', 'usa');
+
+        var num = 500;
+        function fncTest(){
+            var num = 200;
+            document.write('지역변수 : ' + num, '<br>');
+        }
+        fncTest();
+        document.write('전역변수 : ' + num, '<br>');
+
+        function myFnc(num1, num2){
+            document.write('num1 + num2 =');
+            return num1 + num2;
+            document.write('함수종료');
+        }
+        var result = myFnc(100, 200);
+        document.write(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
