@@ -1,2 +1,2 @@
 # JavaScriptStudy
-JavaScriptStudy f
+JavaScript + JQuery + Ajax Study
