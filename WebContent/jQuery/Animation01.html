@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>애니메이션</title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>
+    $(function() {
+        var txt1 = $(".txt1");
+        var count = 1;
+
+        $('.btnWrap button').on('click', function(){
+            var ts = $(this);
+            if(ts.hasClass('backBtn')){
+                count--;
+                if(count<1){
+                    count = 1;
+                    return;
+                }
+                // txt1.css({marginLeft:'-=10%'});
+                txt1.stop(true, true).animate({marginLeft:'-=10%'},500);
+                    // .stop()을 추가시키면 go버튼을 여러번 누르더라도 마우스에서 손 떼면 안 움직인다.
+            } else {
+                count++;
+                if(count > 10){
+                    count = 10;
+                    return;
+                }                
+                // txt1.css({marginLeft:'+=10%'});
+                txt1.stop(true, true).animate({marginLeft:'+=10%'},500);
+            }
+            console.log(count);
+        });
+    });
+    </script>
+    <style>
+        *{margin:0;padding:0;}
+        body{padding:20px;}
+        .btnWrap{margin-bottom: 10px;}
+        .wrap{
+            max-width:600px;
+            border: 1px solid #000; 
+        }
+        .txt1{width:10%; text-align:center;
+        background-color: aqua;}
+    </style>
+</head>
+
+<body>
+    <p class="btnWrap">
+        <button class="backBtn">Back</button>
+        <button class="goBtn">Go</button>
+    </p>
+    <div class="wrap">
+        <p class="txt1">내용1</p>
+    </div>
+</body>
+</html>

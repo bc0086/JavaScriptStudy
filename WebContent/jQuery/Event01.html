@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이벤트함수</title>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script>
+    $(function(){
+        // 마우스오버 이벤트
+        $('.btn1 a').mouseover(function(){
+            alert('hello');
+        });
+
+        // 포커스 이벤트
+        $('.btn1 a').focus(function(){
+            alert('hello');
+        });
+
+        // 위의 것들을 그룹이벤트로 등록시
+        $('.btn1 a').on('mouseover focus', function(){
+            var ts = $(this);
+            ts.css('background-color','yellow');
+        });
+
+        // 클릭이벤트
+        $('.btn1 a').on('click', function(){
+            var ts = $(this);
+            $('btn1').next('ul').filter(':visable').hide();
+                // $('btn1').next('ul') : 'btn1'번의 다음에 오는 ul요소중
+                // .filter(':visable') : 현재상태가 보이는 요소만
+                // .hide() : 숨겨라
+            ts.parent().next().show();
+                // ts 는 this 즉 a태그를 가리킴
+                // ts.parent()는 a태그의 부모 즉 p태그를 가리킴
+                // ts.parent().next()는 p태그의 다음요소 즉 ul태그를 가리킴
+            return false;
+        });
+    })
+</script>
+</head>
+
+<body>
+    <p class="btn1"><a href="#">이벤트 대상1</a></p>
+    <ul style="display:none;">
+        <li>리스트1</li>
+        <li>리스트2</li>
+        <li>리스트3</li>
+    </ul>
+    <p class="btn1"><a href="#">이벤트 대상2</a></p>
+    <ul style="display:none;">
+        <li>리스트4</li>
+        <li>리스트5</li>
+        <li>리스트6</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                url:"./common/MOCK_DATA.json",
+                dataType:"json",
+                success:function(data){
+                    console.log(data);
+                    var tableTag = $("<table />");
+                    data.forEach(function(obj, idx){
+                    	var trTag = $("<tr />");
+                    	var tdId = $("<td />").text(obj.id);
+                    	var tdFirstName = $("<td />").text(obj.first_name);
+                    	
+						trTag.append(tdId, tdFirstName);
+						tableTag.append(trTag);
+                    });
+                    $(".member-wrap").append(tableTag);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="member-wrap">
+
+    </div>
+</body>
+</html>

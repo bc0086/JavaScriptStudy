@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <style>
+        .slider-wrap{
+            max-width: "640px";
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.slider').bxSlider();
+        });
+    </script>
+</head>
+<body>
+    <div class="slider-wrap">
+        <ul class="slider">
+            <li><img src="images/pic_1.jpg" alt=""></li>
+            <li><img src="images/pic_2.jpg" alt=""></li>
+            <li><img src="images/pic_3.jpg" alt=""></li>
+            <li><img src="images/pic_4.jpg" alt=""></li>
+            <li><img src="images/pic_5.jpg" alt=""></li>
+            <li><img src="images/pic_6.jpg" alt=""></li>
+            <li><img src="images/pic_7.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
