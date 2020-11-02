@@ -1,2 +1,2 @@
 # JavaScriptStudy
-JavaScript + JQuery + Ajax Study
+JavaScript, JQuery, Ajax Review
