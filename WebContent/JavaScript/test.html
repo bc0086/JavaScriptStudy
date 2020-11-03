@@ -20,6 +20,27 @@
         result = num % 2 == 0 ? '짝수' : '홀수';
             // 삼항연산자 : 조건식? 실행1 : 실행2
         document.write(result);
+
+        ////////////////////////////////////////////////////////////////////
+
+        var id = "easy";
+        var pw = "1234";
+
+        var user_id = prompt("아이디는?");
+        var user_pw = prompt("비밀번호는?");
+
+        if(id == user_id){ // 아이디 일치여부
+            if(pw == user_pw){ // 비밀번호 일치여부
+                document.write(user_id + " hi");
+            } else {
+                alert("비밀번호 불일치");
+                // location.reload(); : 브라우저 새로고침
+                location.reload(); 
+            }
+        } else {
+           alert("아이디 불일치");
+           location.reload();
+        }
     </script>
 </head>
 <body>

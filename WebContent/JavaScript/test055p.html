@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Doit_55p</title>
+<script>
+	var name = prompt("당신의 이름을 입력하시오.", "ㅇㅇㅇ"); // 이름
+	var height = prompt("당신의 신장을 입력하시오.", "0cm"); // 신장
+	var weight = prompt("당신의 몸무게를 입력하시오.", "0kg"); // 몸무게
+
+	var nomalWeight = (height - 100) * 0.9; // 정상 몸무게
+	var result = weight > nomalWeight - 5 && weight < nomalWeight + 5;
+	result = result ? "정상체중입니다." : "정상체중이 아닙니다.";
+	document.write(name + " 은 " + result);  
+</script>
+</head>
+<body>
+	
+</body>
+</html>
