@@ -41,6 +41,32 @@
            alert("아이디 불일치");
            location.reload();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        
+        // 내장객체 생성방법1
+        var tv = new Object();
+        tv.color = "white";
+        tv.price = 30000;
+        tv.info = function(){
+            document.write("color : " + this.color,"<br>");
+            document.write("color : " + this.price);
+        }
+
+        // 내장객체 생성방법2
+        var car = {
+            color : "black",
+            price : 50000,
+            info : function() {
+                document.write("color : " + this.color,"<br>");
+                document.write("color : " + this.price);
+            }
+        };
+
+        document.write("<h1>tv객체 메서드 호출</h1>");
+        tv.info();
+        document.write("<h1>car객체 메서드 호출</h1>");
+        car.info();
     </script>
 </head>
 <body>

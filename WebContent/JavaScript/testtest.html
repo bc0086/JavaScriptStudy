@@ -4,22 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-    *{margin: 0;}
-    .red{color: #f00;}
-    .green{color: #00f;}
-    .aqua{color: #0ff;}
-    </style>
     <script>
-        for(var i = 1; i < 100; i++){
-            if (i % 5 == 0 && i % 7 ==0) {
-                document.write("<p class = 'aqua'>" + i + "</p>");
-            } else if( i % 7 ==0) {
-                document.write("<p class = 'green'>" + i + "</p>");
-            } else if(i % 5 == 0==0){
-                document.write("<p class = 'red'>" + i + "</p>");
-            }
-        }
+        document.write("<h1>컴퓨터 가위, 바위, 보 맞추기</h1>");
+
+        var game = prompt("가위 바위 보 중 선택하시오");
     </script>
 </head>
 <body>

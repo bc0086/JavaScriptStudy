@@ -30,11 +30,21 @@
         var m = today.getMonth();
         var d = today.getDate();
         var day = today.getDay();
+        var h = today.getHours();
+        var t = today.getTime();
+        var s = today.getSeconds();
+        var ms = today.getMilliseconds();
+        var tls = today.toLocaleString();        
 
         document.write(y, '<br>');
         document.write(m, '<br>');
         document.write(d, '<br>');
         document.write(day, '<br>');
+        document.write(h, '<br>');
+        document.write(t, '<br>');
+        document.write(s, '<br>');
+        document.write(ms, '<br>');
+        document.write(tls, '<br>');
 
         // 3-2. 수학 객체
         // 기본형 : Math.메서드(); 또는 Math.속성;
@@ -43,6 +53,16 @@
         Math.floor(num); // 버림
         Math.ceil(num); // 올림
         Math.random(); // 난수생성
+            // 난수를 발생하여 원하는 구간 정수구하기
+			    //Math.floor(Math.random()*(최대값-최소값+1))+최소값
+        Math.abs(num); // 절대값
+        Math.max(4,6,7); // 가장 큰수
+        Math.min(1,2,3);
+        Math.pow(2,4); // 2의 4승
+        Math.PI; // 원주율
+
+        
+
 
         // 3-3. 문자 객체
         // 기본형 : 참조변수 = new String('String'); 또는 참조변수 = 'string';
