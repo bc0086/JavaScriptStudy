@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라우저객체</title>
+    <script>
+        // 1. window객체
+        // window객체 메서드
+            // 1. open(“URL”,”새 창 이름”,”새 창 옵션”) : URL 페이지를 새 창으로 나타냄
+            window.open("http://www.easypub.com/", "easypub","width=350, height=400, left=50, top=10, scrollbars=no");
+
+            // 2. alert(경고메세지) : 경고 창을 나타내고 데이터를 보여준다
+            alert("잘못 입력했습니다."); 
+
+            // 3. prompt(“질문”,”답변”) : 질문과 답변으로 질의응답창을 나타냄
+            prompt("당신의 연령은?", "0");
+    
+            // 4. confirm(“질문 내용”) : 질문 내용으로 확인이나 취소 창을 나타냄
+            confirm("정말로 삭제하시겠습니까?");
+
+            // 5. setInteval(function(){자바스크립트 코드}, 일정 시간 간격)
+                // 지속적으로 일정한 시간 간격으로 함수를 호출하여 코드를 실행 
+            var intv = setInterval(() => {
+               "i++"; 
+            }, 3000);
+
+            // 6. setTimeout(function(){자바스크립트 코드}, 일정 시간)
+                // 단 한 번 일정 시간에 함수를 호출하여 코드를 실행
+            var tim = setTimeout(() => {
+                "i++";
+            }, 5000);
+
+        // 2. screen객체
+        // screen객체 메서드
+            // 1. screen.width : 화면의 너비값을 반환
+            // 2. screen.height : 화면의 높잇값을 반환
+            // 3. screen.availWidth : 작업표시줄을 제외한 화면의 너빗값을 반환
+            // 4. screen.availHeight : 작업표시줄을 제외한 화면의 높잇값을 반환
+            // 5. screen.colorDepth : 사용자 모니터가 표현 가능한 컬러 bit를 반환
+
+        // 3. location객체
+        // location객체 메서드
+            // 1. location.href : 주소 영역의 참조 주소를 설정하거나 URL을 반환
+			// 2. location.hash : URL의 해시값을 반환
+			// 3. location.hostname : URL의 호스트 이름을 설정하거나 반환
+			// 4. location.host : URL의 호스트 이름과 포트번호를 반환
+			// 5. location.protocol : URL의 프로토콜을 반환
+			// 6. location.search : URL의 쿼리(요청값)을 반환
+			// 7. location.reload() : 새로고침 효과
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
