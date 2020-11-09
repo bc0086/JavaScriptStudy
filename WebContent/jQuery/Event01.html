@@ -1,57 +1,106 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>이벤트함수</title>  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script>
-    $(function(){
-        // 마우스오버 이벤트
-        $('.btn1 a').mouseover(function(){
-            alert('hello');
-        });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>    
+        // 1. 단독 이벤트 등록 메서드
+            /*
+            $("이벤트 등록대상 선택").이벤트 등록 메서드(function(){
+                자바스크립트 코드;
+            })
+            */
+        
+        // 2. 그룹 이벤트 등록 메서드
+            /*
+            1) on() 메서드 등록 방식1
+                $("이벤트 대상 선택").on("이벤트 종류1 이벤트 종류2 ... 이벤트 종류n", function(){
+                    자바스크립트 코드;
+                });
 
-        // 포커스 이벤트
-        $('.btn1 a').focus(function(){
-            alert('hello');
-        });
+            2) on() 메서드 등록 방식2
+                $("이벤트 대상 선택").on({
+                    "이벤트 종류1 이벤트 종류2... 이벤트 종류n" : function(){
+                        자바스크립트 코드;
+                    }
+                });
 
-        // 위의 것들을 그룹이벤트로 등록시
-        $('.btn1 a').on('mouseover focus', function(){
-            var ts = $(this);
-            ts.css('background-color','yellow');
-        });
+            3) on() 메서드 등록 방식3
+                $("이벤트 대상 선택").on({
+                    "이벤트 종류1" : function() {자바스크립트 코드1},
+                    "이벤트 종류2" : function() {자바스크립트 코드2},
+                    "이벤트 종류n" : function() {자바스크립트 코드n},
+                })
+            */
+        $(function(){
+            $(".btn1").click(function(){
+                $(".btn1").parent().next().css({"color":"#f00"});
+            });
 
-        // 클릭이벤트
-        $('.btn1 a').on('click', function(){
-            var ts = $(this);
-            $('btn1').next('ul').filter(':visable').hide();
-                // $('btn1').next('ul') : 'btn1'번의 다음에 오는 ul요소중
-                // .filter(':visable') : 현재상태가 보이는 요소만
-                // .hide() : 숨겨라
-            ts.parent().next().show();
-                // ts 는 this 즉 a태그를 가리킴
-                // ts.parent()는 a태그의 부모 즉 p태그를 가리킴
-                // ts.parent().next()는 p태그의 다음요소 즉 ul태그를 가리킴
-            return false;
-        });
-    })
-</script>
-</head>
+            $(".btn2").on({
+                "mouseover focus" : function(){
+                    $(".btn2").parent().next().css({"color":"#0f0"});
+                },
+                "mouseout blur" : function() {
+                    $(".btn2").parent().next().css({"color":"#000"});
+                }
+            });
 
-<body>
-    <p class="btn1"><a href="#">이벤트 대상1</a></p>
-    <ul style="display:none;">
-        <li>리스트1</li>
-        <li>리스트2</li>
-        <li>리스트3</li>
-    </ul>
-    <p class="btn1"><a href="#">이벤트 대상2</a></p>
-    <ul style="display:none;">
-        <li>리스트4</li>
-        <li>리스트5</li>
-        <li>리스트6</li>
-    </ul>
-</body>
+        // 3. 강제로 이벤트 발생시키기
+            // $(“이벤트 대상”).trigger(“이벤트 종류”);
+            $(".btn3").on({
+                "mouseover focus":function(){
+                    $(".btn3").parent().next().css({"color":"#0f0"});
+                }
+            });  
+            
+            //$(".btn3").trigger("mouseover");
+
+        // 4. 이벤트 제거 메서드
+            // $(“이벤트 대상”).off(“제거할 이벤트 종류”);
+            $(".btn3").off("mouseover focus");
+
+        // 5. 로딩 이벤트 메서드
+            // 5-1) $(document).ready(function() {자바스크립트 코드;});
+            // 5-2) $(document).on(“ready”,function() {자바스크립트 코드;});
+	            //사용자가 사이트 방문할 때 요청한 HTML문서객체(document)의 로딩이 끝나면 이벤트 발생
+            $(document).ready(function(){
+                var h1 = $(".img1").height();
+                console.log("ready :", h1); //ready:0
+            });
+
+            // 5-3) $(window).load(function() {자바스크립트 코드;});
+            // 5-4) $(window).on(“ready”,function() {자바스크립트 코드;});
+			    //외부에 연동된 소스(iframe, img, video)의 로딩이 끝나면 이벤트 발생
+            $(window).load(function(){
+                var h2 = $(".img1").height();
+                console.log("load :", h2); //load:300
+            });
+        })
+    </script>
+    </head>
+    
+    <body>
+        <p>
+            <button class="btn1">버튼1</button>
+        </p>
+        <p>내용1</p>
+
+        <p>
+            <button class="btn2">버튼2</button>
+        </p>
+        <p>내용2</p>
+
+        <p>
+            <button class="btn3">버튼3</button>
+        </p>
+        <p>내용3</p>
+
+        <p>
+            <img src="http://place-hold.it/300X300" class="img1">
+        </p>
+    </body>
 </html>

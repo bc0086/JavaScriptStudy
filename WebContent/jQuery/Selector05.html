@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>객체 조작 메서드</title>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script>
+    // 1. 속성 조작 메서드
+    $(function(){
+		// 1) $(“요소 선택”).html(); : 선택한 요소의 하위요소를 가져와 문자열로 반환
+		var result_1 = $("#sec_1").html();
+		console.log(result_1);
+
+		// 2) $(“요소 선택”).html(“새 요소”); : 선택한 요소의 하위요소 제거 및 지정한 새 요소 생성
+		$("#sec_1 p").html("<a href=\"#\">Text1</a>");
+
+		// 3) $("요소 선택").text(); : 선택한 요소의 텍스트만 가져옴
+		var result_2 = $("#sec_2").text();
+		console.log(result_2);
+
+		// 4) $(“요소 선택”).text(“새 텍스트”); : 선택한 요소의 하위요소 제거 및 지정한 텍스트 생성
+		$("#sec_2 h").text("text()");
+
+		// 5-1) $(“요소 선택”).attr(“속성명”); : 선택한 요소의 지정한 속성값을 가져옴
+		var srcVal = $("#sec_3 img").attr("src");
+		console.log(srcVal);
+
+		// 5-2)	$(“요소 선택”).attr(“{“속성명”:”새 값1”, “속성명”:”새 값1”, “속성명n”:”새 값n”});
+			// : 요소를 선택하여 지정한 여러 개의 속성값을 적용
+		$("#sec_3 img").attr({"width":200, "src":srcVal.replace("1.jpg","2.jpg"), "alt":"바위"}).removeAttr("border");
+    
+		// 6) $(“요소 선택”).addClass(“class 값”); : 요소를 선택하여 지정한 class값 생성
+		
+		// 7) (“요소 선택”).removeClass(“class 값”); : 요소를 선택하여 지정한 class값 삭제
+		
+		// 8) $(“요소 선택”).toggleClass(“class 값”); : 요소를 선택하여 지정한 class값 생성/삭제
+		
+		// 9) $(“요소 선택”).hasClass(“class 값”); : 요소를 선택하여 지정한 class값 true/false
+
+		// 10-1) $(“요소 선택”).val(); : 선택한 폼 요소의 value속성값을 가져옴
+		var result_3 = $("#user_name").val();
+		console.log(result_3);
+
+		// 10-2) $(“요소 선택”).val(“새 값”); : 요소를 선택하여 value속성에 새 값을 적용
+		$("#user_id").val("javascript");
+
+		// 11-1) $(“요소 선택”).prop(“[checked | selected]”);
+			// : 선택한 폼 요소(체크박스, 라디오, 선택상자)가 체크/선택된 상태인지 true/false 반환
+		var result_4 = $("#chk1").prop("checked");
+		console.log(result_4); //false
+
+		// 11-2) $(“요소 선택”).prop(“[checked | selected]”, [true | false]);
+			// : 폼 요소(체크박스, 라디오, 선택상자)를 선택하여 체크/선택 상태를 바꿀 수 있다.
+		var result_5 = $("#chk3").prop("checked", true);
+
+		// 11-3) $(“요소 선택”).prop(“[tagName | nodeType | selectedIndex | defaultValue]”);
+			/*
+			: 선택한 요소의 태그명이나 노드 타입, 선택된 옵션의 인덱스 값을 구한다.
+				-> 이때 폼 요소에 prop(“defaultValue”)를 사용하면 사용자가 value속성값을 바꿔도
+					초기의 value속성값을 가져온다.
+			*/
+		var result_6 = $("#se_1").prop("selectedIndex");
+		console.log(result_6); //2
+
+	// 2. 수치 조작 메서드
+		/*
+		1) 요소의 높이 / 너비 메서드
+			- $(“요소 선택”).height(); / $(“요소 선택”).width();
+			- $(“요소 선택”).height(값); / $(“요소 선택”).width(값);
+				//요소의 높잇값과 너빗값을 반환 또는 변경
+
+			- $(“요소 선택”).innerHeight(); / $(“요소 선택”).innerWidth();
+			- $(“요소 선택”).innerHeight(값); / $(“요소 선택”).innerWidth(값);
+			//여백을 포함한 요소의 높잇값과 너빗값을 반환 또는 변경
+
+			- $(“요소 선택”).outerHeight(); / $(“요소 선택”).outerWidth();
+			- $(“요소 선택”).outerHeight(값); / $(“요소 선택”).outerWidth(값);
+			//여백 및 선 두께를 포함한 요소의 높잇값과 너빗값을 반환 또는 변경
+
+		2) 요소 위치 메서드
+			- $(요소 선택).position().[left | right | top | bottom]
+				: 포지션 기준이 되는 요소를 기준으로 선택한 요소의 위치 좌푯값을 반환
+
+			- $(요소 선택).offset().[left | top]
+				: 문서(Document)를 기준으로 선택한 요소의 위치 좌푯값을 반환
+
+		3) 스크롤바 위치 메서드
+			- $(요소 선택).scrollTop(); / $(요소 선택).scrollLeft();
+				: 스크롤바가 수직 또는 수평으로 이동한 위칫값을 반환
+
+			- $(요소 선택).scrollTop(새 값); / $(요소 선택).scrollLeft(새 값);
+				: 입력한 수치만큼 수직 또는 수평으로 스크롤바를 이동
+		*/
+	
+	// 3. 객체 편집 메서드
+		/*
+		1) before() / insertBefore() / after() / insertAfter() 메서드
+			- $(요소 선택).before(“새 요소”);
+			- $(요소 선택).insertBefore(“요소 선택”);
+				//선택한 요소의 이전 위치에 새 요소를 생성
+
+			- $(요소 선택).after(“새 요소”);
+			- $(요소 선택).insertAfter(“요소 선택”);
+				//선택한 요소의 다음 위치에 새 요소를 생성
+
+		2) append() / appendTo() / prepend() / prependTo() 메서드
+			- $(요소 선택).append(새 요소);
+			- $(요소 선택).appendTo(요소 선택);
+				//선택한 요소내의 마지막 위치에 새 요소를 생성
+
+			- $(요소 선택).prepend(새 요소);
+			- $(요소 선택).prependTo(요소 선택);
+				//선택한 요소내의 앞 위치에 새 요소를 생성
+
+		3) clone() / empty() / remove() 메서드
+			- $(“요소 선택”).clone([true | false]);
+				: 선택한 요소를 복제, 단 true면 이벤트까지 복사하고 false면 요소만 복제
+			- $(“요소 선택”).empty(); : 선택한 요소의 모든 하위요소 삭제
+			- $(“요소 선택”).remove(); : 선택한 요소 삭제
+
+		4) replaceAll() / replaceWith() 메서드
+			- $(“새 요소”).replaceAll(“요소 선택”);
+			- $(“요소 선택”).replaceWith(“새 요소”);
+
+		5) unwrap() / wrap() / wrapAll() / wrapInner() 메서드
+			- $(“요소 선택”).unwrap(); : 선택한 요소의 부모 요소를 삭제
+			- $(“요소 선택”).wrap(새 요소); 선택한 요소를 새 요소로 각각 감쌈
+			- $(“요소 선택”).wrapAll(새 요소); 선택한 요소를 새 요소로 한꺼번에 감쌈
+			- $(“요소 선택”).wrapInner(새 요소); 선택한 요소의 모든 하위 요소를 새 요소로 감쌈
+		*/	
+	})
+</script>
+</head>
+
+<body>
+	<h1><strong>객체 조작 및 생성</strong></h1>
+	<section id="sec_1">
+		<h2><em>html()</em></h2>
+		<p>내용1</p>
+	</section>
+	<section id="sec_2">
+		<h2><em>텍스트()</em></h2>
+		<p>내용2</p>
+	</section>	
+
+	/////////////////////////////////////////////////////////////////////////////////////////// 
+	
+	<h1><strong>$(“요소 선택”).attr(“속성명”); </strong></h1>
+    <section id="sec_3">
+        <h2>이미지 속성</h2>
+        <p><img src="../images/math_img_1.jpg" alt="가위" border="2"></p>
+	</section>
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
+	<h1>$(“요소 선택”).val(); 그리고 $(“요소 선택”).val(“새 값”);</h1>
+	<form action="#" id="form_1">
+		<p>
+			<label for="user_name">이름</label> 
+			<input type="text" name="user_name"
+				id="user_name" value="용대리">
+		</p>
+		<p>
+			<label for="user_id">아이디</label> 
+			<input type="text" name="user_id"
+				id="user_id" value="hello">
+		</p>
+	</form>
+
+	///////////////////////////////////////////////////////////////////////////////////////////
+
+	<h1><strong>객체 조작 및 생성</strong></h1>
+	<form action="#" id="form_1">
+		<p>
+			<input type="checkbox" name="chk1" id="chk1">
+			<label for="chk1">chk1</label>
+			<input type="checkbox" name="chk2" id="chk2" checked>
+			<label for="chk2">chk2</label>
+			<input type="checkbox" name="chk3" id="chk3">
+			<label for="chk3">chk3</label>
+		</p>
+		<p>
+			<select name="se_1" id="se_1">
+				<option value="opt1">option1</option>
+				<option value="opt2">option2</option>
+				<option value="opt3" selected>option3</option>
+			</select>
+		</p>
+	</form>
+</body>
+</html>

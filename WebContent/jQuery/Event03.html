@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>    
+        // 포커스 이벤트
+        $(function(){
+            /*
+            1) focus() / blur() / focusin() / focusout() 이벤트 메서드
+                - $(“이벤트 대상 선택”).focus(function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).on(“focus”,function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).focus(); //focus 이벤트 강제 발생
+
+                - $(“이벤트 대상 선택”).blur(function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).on(“blur”,function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).blur(); //blur 이벤트 강제 발생
+
+                - $(“이벤트 대상 선택”).focusin(function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).on(“focusin”,function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).focusin(); // focusin 이벤트 강제 발생
+
+                - $(“이벤트 대상 선택”).focusout(function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).on(“focusout”,function() {자바스크립트 코드;}); //이벤트 등록
+                - $(“이벤트 대상 선택”).focusout (); //focusout 이벤트 강제 발생
+            */
+            $("#user_id_1, #user_pw_1").on("focus", function(){
+                $(this).css({"background-color":"pink"});
+            });
+
+            $("#user_id_1, #user_pw_1").on("blur", function(){
+                $(this).css({"background-color": "white"});
+            });
+
+            $("#frm_2").on("focusin", function(){
+                $(this).css({"background-color":"pink"});
+            });
+
+            $("#frm_2").on("focusout", function(){
+                $(this).css({"background-color": "white"});
+            });
+            
+            /*
+            2) change() 이벤트 메서드
+                - $(“이벤트 대상 선택”).change(function() {자바스크립트 코드;}); //이벤트 등록
+			    - $(“이벤트 대상 선택”).on(“change”,function() {자바스크립트 코드;}); //이벤트 등록
+			    - $(“이벤트 대상 선택”).change(); //change 이벤트 강제 발생
+            */
+            $("#rel_site").on("change", function(){
+                $(".txt").text($(this).val());
+            });
+         
+            
+      
+           
+        })
+    </script>
+    </head>
+    
+    <body>
+        <h1>focus / blur</h1>
+        <form action="#">
+            <p>
+                <label for="user_id_1">ID</label>
+                <input type="text" 
+                name="user_id_1" id="user_id_1">
+            </p>
+            <p>
+                <label for="user_pw_1">PW</label>
+                <input type="password" 
+                name="user_pw_1" id="user_pw_1">
+            </p>
+        </form>
+        <h1>focusin / focusout</h1>
+        <form action="#" id="frm_2">
+            <p>
+                <label for="user_id_2">ID</label>
+                <input type="text" 
+                name="user_id_2" id="user_id_2">
+            </p>
+            <p>
+                <label for="user_pw_2">PW</label>
+                <input type="password" 
+                name="user_pw_2" id="user_pw_2">
+            </p>
+        </form>
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        
+        <h1>change() 메서드</h1>
+        <select id="rel_site">
+            <option value="">사이트 선택</option>
+            <option value="www.google.com">구글</option>
+            <option value="www.naver.com">네이버</option>
+            <option value="www.daum.net">다음</option>
+        </select>
+        <p class="txt"></p>
+    </body>
+</html>
