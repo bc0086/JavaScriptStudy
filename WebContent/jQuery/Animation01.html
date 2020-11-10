@@ -6,54 +6,98 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script>
+    // 효과 메서드
     $(function() {
-        var txt1 = $(".txt1");
-        var count = 1;
+        /*
+        1) 기본형
+			- $(“요소 선택”).효과 메서드(효과 소요 시간, 가속도, 콜백 함수);
+				-> 효과 소요 시간 : “slow”, “nomal”, “last”, 1000(1초), 500(0.5초)
+				-> 가속도 : “swing”(시작과 끝은 느리지만 중간은 빠른속도), “linear”(일정한 속도)
+				-> 콜백 함수 : 생략 가능
 
-        $('.btnWrap button').on('click', function(){
-            var ts = $(this);
-            if(ts.hasClass('backBtn')){
-                count--;
-                if(count<1){
-                    count = 1;
-                    return;
-                }
-                // txt1.css({marginLeft:'-=10%'});
-                txt1.stop(true, true).animate({marginLeft:'-=10%'},500);
-                    // .stop()을 추가시키면 go버튼을 여러번 누르더라도 마우스에서 손 떼면 안 움직인다.
-            } else {
-                count++;
-                if(count > 10){
-                    count = 10;
-                    return;
-                }                
-                // txt1.css({marginLeft:'+=10%'});
-                txt1.stop(true, true).animate({marginLeft:'+=10%'},500);
-            }
-            console.log(count);
+		2) 효과 메서드 종류
+			- 숨김 : hide(), fadeOut(), slideUp()
+			- 노출 : show(), fadeIn(), slideDown()
+			- 토글 : toggle(), fadeToggle(), slideToggle(), 
+            - 투명도 지정 : fadeTo()
+        */
+        $(".btn2").hide();
+
+        $(".btn1").on("click", function(){
+            $(".box").slideUp(1000,"linear", function(){
+                $(".btn1").hide();
+                $(".btn2").show();
+            });
+        });
+
+        $(".btn2").on("click", function(){
+            $(".box").fadeIn(1000,"swing", function(){
+                $(".btn2").hide();
+                $(".btn1").show();
+            });
+        });
+
+        $(".btn3").on("click", function(){
+            $(".box").slideToggle(1000, "linear");
+        });
+
+        $(".btn4").on("click", function(){
+            $(".box").fadeTo("fast", 0.3);
+        });
+
+        $(".btn5").on("click", function(){
+            $(".box").fadeTo("fast", 1);
         });
     });
+
+    // 애니메이션 메서드
+    $(function(){
+        // 1. $(“요소 선택”).animate({스타일 속성}, 적용 시간, 가속도, 콜백 함수)
+        $(".btn1").on("click", function(){
+            $(".txt1").animate({marginLeft:"500px", fontSize:"30px"}, 2000, "linear", function(){
+                alert("모션 완료!");
+            });
+        });
+
+        $(".btn2").on("click", function(){
+            $(".txt2").animate({marginLeft:"+=50px"}, 1000);
+        });
+    })
     </script>
     <style>
-        *{margin:0;padding:0;}
-        body{padding:20px;}
-        .btnWrap{margin-bottom: 10px;}
-        .wrap{
-            max-width:600px;
-            border: 1px solid #000; 
+        .content{
+            width:400px;
+            background-color: #eee;
         }
-        .txt1{width:10%; text-align:center;
-        background-color: aqua;}
-    </style>
+
+        .txt1{background-color: aqua;}
+	    .txt2{background-color: pink;}
+    </style>    
 </head>
 
 <body>
-    <p class="btnWrap">
-        <button class="backBtn">Back</button>
-        <button class="goBtn">Go</button>
-    </p>
-    <div class="wrap">
-        <p class="txt1">내용1</p>
+    <p>
+		<button class="btn1">slideUp</button>
+		<button class="btn2">fadeIn</button>
+	</p>
+	<p>
+		<button class="btn3">toggleSide</button>
+	</p> 
+	<p>
+		<button class="btn4">fadeTo(0.3)</button>
+		<button class="btn5">fadeTo(1)</button>
+	</p>   
+	<div class="box">
+		<div class="content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat consectetur nibh, ut luctus urna placerat non. Phasellus consectetur nunc nec mi feugiat egestas. Pellentesque et consectetur mauris, sed rutrum est. Etiam odio nunc, ornare quis urna sed, fermentum fermentum augue. Nam imperdiet vestibulum ipsum quis feugiat. Nunc non pellentesque diam, nec tempor nibh. Ut consequat sem sit amet ullamcorper sodales.
+		</div>
     </div>
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    <h1>animate() 메서드</h1>
+    <p><button class="btn1">버튼1</button></p>
+	<span class="txt1">"500px" 이동</span>
+	<p><button class="btn2">버튼2</button></p>
+	<span class="txt2">"50px"씩 이동</span>
 </body>
 </html>

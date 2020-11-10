@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>    
+        // 그룹 이벤트 등록 메서드
+        $(function(){
+            /*
+            1) on()메서드 : 라이브 이벤트 등록 방식
+			- $([document | “이벤트 대상의 상위 요소 선택”]).on(“이벤트 종류”,”이벤트 대상 선택”,function(){
+				    자바스크립트 코드;
+                });
+            */
+            $(".btn_1.on").on("mouseover focus", function(){
+                alert("HELLO");
+            });
+            $(".btn_1").addClass("on");
+                // 이벤트를 등록하고 class값을 생성하면 이벤트가 정상적으로 등록되지 않는다.
+
+            $(document).on("mouseover focus", ".btn_2.on", function(){
+                alert("WELCOME");
+            });
+            $(".btn_2").addClass("on");
+                // 라이브 이벤트 등록 방식으로 이벤트를 등록한다음 class값을 생성하면 이벤트가 정상적으로 등록됨.
+
+            /*    
+            2) delegate() 메서드 : 선택한 요소의 하위요소에 이벤트 등록
+			- $([document | “이벤트 대상의 상위 요소 선택”]).delegate(“이벤트 대상 요소 선택”,”이벤트 종류”,function(){
+			    	자바스크립트 코드;
+                });
+
+		    3) one() 메서드
+			- $(“이벤트 대상 선택”).one(“이벤트 종류”,function() {
+					자바스크립트 코드;
+				});
+
+			- $([document | “이벤트 대상의 상위 요소 선택”]).one(“이벤트 종류”,”이벤트 대상 요소 선택”,function(){
+			    	자바스크립트 코드;
+                });
+            */
+            $(".btn_wrap1").delegate(".btn_3.on", "mouseover focus", function(){
+                alert("HELLO");
+            });
+            $(".btn_3").addClass("on");
+            
+            $(document).one("mouseover focus", ".btn_4.on", function(){
+                // 1회만 발생
+                alert("WELCOME");
+            });
+            $(".btn_4").addClass("on");
+        })
+
+        // 그룹 이벤트 삭제 메서드
+        $(function(){
+            /*
+            1) off() 메서드
+			    - $(“이벤트 대상 요소 선택”).off(“이벤트 종류”);
+			    - $([document | “이벤트 대상의 상위 요소 선택”]).off(“이벤트 종류”,”이벤트 대상 선택”);
+		
+            2) unbind() 메서드
+                - $(“이벤트 대상 요소 선택”).unbind(“이벤트 종류”);
+
+            3) undelegated() 메서드
+                - $(“이벤트 대상 요소 선택”).delegate(“이벤트 종류”);
+                - $([document | “이벤트 대상의 상위 요소 선택”]).undelegate(“이벤트 종류”,”이벤트 대상 선택”);
+            */
+            $(".btn_5").on("mouseover", function(){
+                alert("HELLO");
+            });
+            $(document).on("mouseover", ".btn_6", function(){
+                alert("WELCOME");
+            });
+            var btn_6 = $("<p><button class=\"btn_6\">버튼6</button></p>");
+            $("#wrap").append(btn_6);
+
+            $(".del_1").on("click", function(){
+                $(".btn_5").off("mouseover");
+            });
+            $(".del_2").on("click", function(){
+                $("document").off("mouseover",".btn_6");
+            });
+        })
+    </script>
+    </head>
+    
+    <body>
+        <div id="wrap">
+            <p><button class="btn_1">버튼1</button></p>
+            <p><button class="btn_2">버튼2</button></p>
+        </div>
+
+        <div id="wrap1">
+            <h1>delegate() 메서드</h1>
+            <p class="btn_wrap1">
+                <button class="btn_3">버튼3</button>
+            </p>
+            <h1>one() 메서드</h1>
+            <p><button class="btn_4">버튼4</button></p>
+        </div>
+        ////////////////////////////////////////////////////////////////////////////////
+        <div id="wrap">
+            <p><button class="btn_5">버튼5</button></p>
+        </div>
+        <p>
+            <button class="del_1">버튼1 이벤트 해지</button> 
+            <button class="del_2">버튼2 이벤트 해지</button>
+        </p>
+    </body>
+</html>
