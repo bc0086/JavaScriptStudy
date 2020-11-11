@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>애니메이션</title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>
+        // 애니메이션 효과 제어 메서드
+        $(function() {
+            /*
+            1) stop() / delay() 메서드
+			- $(“요소 선택”).stop();
+			- $(“요소 선택”).stop(clearQueue, finish); //clearQueue와 finish는 true/false가 온다.
+
+			- $(“요소 선택”).delay(지연 시간).애니메이션 효과 메서드();
+
+            */
+            $(".txt1").animate({marginLeft:"300px"}, 1000);
+
+            $(".txt2").delay(3000).animate({marginLeft:"300px"}, 1000);
+
+            $(".btn1").on("click", moveElement);
+
+            function moveElement(){
+                $(".txt3").animate({marginLeft:"+=50px"},800);
+              
+                $(".txt4").animate({marginLeft:"+=50px"},800);
+                $(".txt4").stop();
+
+                $(".txt5").animate({marginLeft:"+=50px"},800);
+                $(".txt5").stop(true, true);
+            };
+
+            /*
+            2) queue() / dequeue() 메서드
+                - $(“요소 선택”).queue(); //큐의 함수 반환, 실행이후의 모든 애니매이션이 취소됨
+                - $(“요소 선택”).queue(function(){자바스크립트 코드}); //큐에 함수 추가
+
+                - $(“요소 선택”).dequeue(); 
+                    //queue() 메서드 실행 이후에 적용된 애니메이션 메서드가 취소 되지 않게 연결
+            */
+            $(".txt6")
+            .animate({marginLeft:"200px"}, 1000)
+            .animate({marginTop:"200px"}, 1000)
+            .queue(function(){
+                $(this).css({background:"red"});
+                $(this).dequeue();
+            })
+            .animate({marginLeft:0}, 1000)
+            .animate({marginTop:0}, 1000);
+
+            /*
+            3) clearQueue() 메서드
+			    - $(“요소 선택”).clearQueue(); //진행중인 애니메이션 외, 대기중인 모든 애니메이션 삭제
+            */
+            $(".txt6")
+            .animate({marginLeft:"100px"}, 1000)
+            .animate({marginLeft:"300px"}, 1000)
+            .animate({marginLeft:"400px"}, 1000);
+
+            $(".txt7")
+            .animate({marginLeft:"100px"}, 1000)
+            .animate({marginLeft:"300px"}, 1000)
+            .animate({marginLeft:"400px"}, 1000);
+            $(".txt7").clearQueue();
+        })
+    </script>
+<style>
+	p{width: 110px;text-align: center;}
+	.txt1{background-color: aqua;}
+	.txt2{background-color: pink;}
+	.txt3{background-color: orange;}
+	.txt4{background-color: green;}
+	.txt5{background-color: gold;}
+
+    *{margin:0;}
+	.txt6{width:50px;text-align: 
+	center;background-color: aqua;}
+</style>
+</head>
+
+<body>
+    <p class="txt1">효과1</p>
+	<p class="txt2">효과2<br> delay(3000)</p>
+
+	<p><button class="btn1">50px 전진</button></p>
+	<p class="txt3">효과3</p>
+	<p class="txt4">효과4<br>stop( )</p>
+    <p class="txt5">효과5<br>stop(true, true)</p> 
+    
+    ///////////////////////////////////////////////////////////////////////////////////////
+   
+    <h1>queue() / dequeue() 메서드</h1>
+    <p class="txt6">내용1</p>
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    
+    <h1>clearQueue() 메서드</h1>
+    <p class="txt7">내용1</p>
+    <p class="txt8">내용1</p>
+</body>
+</html>
