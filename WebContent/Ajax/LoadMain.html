@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <title>Document</title>
+    <script>
+        // Ajax
+        /*
+        1. load() 메서드
+            - 사용자가 지정한 URL 주소에 데이터를 전송하고 외부 콘텐츠를 요청하여 가져올 때 사용
+		    - $(요소 선택).load(url, data, 콜백 함수)
+        */
+        $(function(){
+            $("#newsWrap_1")
+            .load("Load01.html #news_1");
+
+            $("#newsWrap_2")
+            .load("Load01.html #news_2");
+
+        })
+    </script>
+</head>
+<body>
+    <h1>LOAD 1</h1>
+	<div id="newsWrap_1"></div>
+	<h1>LOAD 2</h1>   
+	<div id="newsWrap_2"></div>
+</body>
+</html>
