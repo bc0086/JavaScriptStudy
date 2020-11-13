@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <title>Document</title>
+    <script>
+        // Ajax
+        /*
+        1. XML 바인딩
+            - 태그명을 사용자가 임의로 작성할 수 있는 확장성 마크업 언어
+            - <?xml version=”1.0” encoding=”UTF-8”?>
+                <tag1>
+                <tag2>내용</tag2>
+                </tag1>
+        */
+        $(function(){
+            $.ajax({
+                url:"common/dataset.xml",
+                dataType:"xml",
+                success:function(data){
+                    var $data = $(data).find("record");
+                        // dataset.xml에서 find()메서드를 사용해 얻어낸 <record> 객체를 참조함.
+                    if($data.length>0){
+                        var tb = $("<table/>");
+                        $.each($data, function(i,o){
+                            // 배열에 저장된 요소의 개수만큼 메서드를 반복 실행
+                            var $id =
+                            $(o).find("id").text();
+
+                            var $first_name =
+                            $(o).find("first_name").text();
+
+                            var $last_name =
+                            $(o).find("last_name").text();
+
+                            var $email =
+                            $(o).find("email").text();
+
+                            var $gender =
+                            $(o).find("gender").text();
+
+                            var row = $("<tr />").append(
+                                $("<td />").text($id),
+                                $("<td />").text($first_name),
+                                $("<td />").text($last_name),
+                                $("<td />").text($email),
+                                $("<td />").text($gender),
+                            );
+
+                            tb.append(row);
+                        });
+                        $(".wrap").append(tb);
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

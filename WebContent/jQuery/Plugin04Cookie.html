@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- 추가된 플러그인 -->    
+    <script src="jquery-cookie/jquery.cookie.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{font-size: 12px;}
+        input{vertical-align: middle;}
+        #notice_wrap{
+            width: 300px;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            box-shadow:0 0 8px #000;
+        }
+        .closeWrap{
+            background-color: #000;
+            color:#fff;
+            text-align: right;
+            padding:5px 10px;
+        }
+        .closeWrap button{
+            margin-left: 20px;
+            cursor:pointer;
+        }
+    </style>
+    <script>
+    // 1. 제이쿼리 쿠키 메서드 사용법
+        /*
+            - $.cookie(“쿠키 이름”, “쿠키 값”, {expires:만료일, path:”저장 경로”});
+                -> 저장 경로에 /를 입력하면 최상위 폴더에 저장됨.
+        */    
+
+        $(function(){
+            if($.cookie("popup")=="none"){
+                $("#notice_wrap").hide();
+            }
+
+            var $expChk = $("#expiresChk");
+            $(".closeBtn").on("click", closePop);
+
+            function closePop(){
+                if($expChk.is(":checked")){
+                    $.cookie("popup","none",{expires:3, path:"/"});
+                }
+                $("#notice_wrap").fadeOut("fast");
+            }
+        })
+    </script>
+</head>
+<body>
+    <div id="notice_wrap">
+		<img src="../images/window_object_1.jpg" alt="공지사항">
+		<p class="closeWrap">
+			<input type="checkbox" name="expiresChk" id="expiresChk">
+			<label for="expiresChk">3일 동안 이 창 열지않기</label>
+			<button class="closeBtn">닫기</button>
+	</p>
+	</div>  
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- 추가된 플러그인 -->
+    <link rel="stylesheet" href="bxslider-4-4.2.12/dist/jquery.bxslider.css">
+    <script src="bxslider-4-4.2.12/dist/jquery.bxslider.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        #gallery_wrap{
+            margin: 0 auto;
+            width: 640px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.slide_gallery').bxSlider({
+                auto: true,
+                    // 슬라이드 자동 실행
+                autoControls: true,
+                stopAutoOnClick: true,
+                    // 이전 또는 다음 버튼을 누르면 슬라이즈 정지
+                pager: true
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="gallery_wrap">
+        <ul class="slide_gallery">
+            <li><img src="../images/pic_1.jpg" alt="사진1"></li>
+            <li><img src="../images/pic_2.jpg" alt="사진2"></li>
+            <li><img src="../images/pic_3.jpg" alt="사진3"></li>
+            <li><img src="../images/pic_4.jpg" alt="사진4"></li>
+            <li><img src="../images/pic_5.jpg" alt="사진5"></li>
+            <li><img src="../images/pic_6.jpg" alt="사진6"></li>
+            <li><img src="../images/pic_7.jpg" alt="사진7"></li>
+            <li><img src="../images/pic_8.jpg" alt="사진8"></li>
+        </ul>
+    </div>
+</body>
+</html>

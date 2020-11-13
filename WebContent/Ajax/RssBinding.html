@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신문사RSS 연동하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>
+        // 서버 언어(PHP)로 교차 도메인 데이터(XML)불러오기
+        /*
+        1) PHP
+			- PHP언어는 서버가 서로 통신할 수 있는 cURL 메서드를 지원
+			- 선언문
+				<?php
+					php코드
+				?>
+
+			- 변수 선언문
+				<?
+					$변수 이름=값;
+				?>
+
+		2) cURL 메서드
+			- curl_init() : cURL을 사용하기 위해 초기화 하는 메서드로, cURL 세션을 생성
+			- crul_setopt(세션, 옵션, 값) : 생성된 cURL 세션의 옵션을 설정
+				-> 옵션1. CURLOPT_URL : 접속할 url 주소 설정
+				-> 옵션2. CURLOPT_SSL_VERIFYPEER : SSL 인증서 검사 여부 설정
+				-> 옵션3. CURLOPT_RETURNRANSFER : 결과값을 받을 것인지의 여부
+				-> 옵션4. CURLOPT_HEADER : 헤더 정보 출력 여부 설정
+			- curl_exec() : cURL 세션을 실행
+			- curl_close() : cURL 세션을 종료
+        */
+        $(function(){
+            $.ajax({
+                url:"RssBindingSample.php",
+                dataType:"xml",
+                success:function(data){
+                    var $items = $(data).find("item");
+
+                    if($items.length > 0) {
+                        $items = $items.slice(0, 10);
+
+                        var $ulTag = $("<ul/>");
+                        $.each($items, function(i,o){
+                            var $title = $(o).find("title").text();
+                            var $link = $(o).find("link").text();
+
+                            var $aTag = $("<a/>")
+                            .attr({
+                                "href":$link,
+                                "target":"_blank"
+                            })
+                            .text($title);
+                            
+                            var $liTag = $("<li/>")
+                            .append($aTag);
+
+                            $ulTag.append($liTag);
+                        });
+                        $(".wrap").append($ulTag);
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$.fn.extend() 메서드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>        
+        // 1. $.fn.extend()메서드 : 개발자가 직접 제작한 함수를 제이쿼리에 확장시켜주는 역할
+        /*
+        1-1. 방법1
+            $.fn.extend({
+                확장 함수명: function(aoroqustn1, 매개변수2,…) {
+                    $(this); // 플러그인을 적용한 요소를 가리킴
+                    자바스크립트 코드;
+                }
+            });
+            $(“요소 선택”).확장함수명(인자값1, 인자값2); //플러그인 적용
+        
+        1-2. 방법2
+            $.fn.확장 함수명 = function(매개변수1, 매개변수2, …){
+                …
+            }
+        */
+        $(function() {
+            $.fn.open = function(eventType, message){
+                var ts = $(this);
+
+                $.each(ts, function(i,o){
+                    $(o).on(eventType, function(){
+                        alert(message);
+                    });
+                });
+            }
+            $(".btn1").open("mouseover","welcome");
+            $(".btn2").open("click", "hello!");
+        });
+    </script>   
+    </head>
+    
+    <body>
+        <p><button class="btn1">버튼1</button></p>
+	    <p><button class="btn2">버튼2</button></p>
+	    <p><button class="btn3">버튼3</button></p>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신문사RSS 연동하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script>
+        // 동일 출처 원칙에 따라 RSS를 불러오지 못하고 에러 발생
+        $(function(){
+            $.ajax({
+                url:"http://www.chosun.com/site/data/rss/www_section_rss.xml",
+                dataType:"xml",
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        })
+       
+
+    </script>
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

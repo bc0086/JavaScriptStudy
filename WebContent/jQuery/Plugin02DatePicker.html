@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Plugin </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- 추가된 플러그인 -->
+<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+<script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+<script>
+	$( function() {
+		$( "#startDate" ).datepicker({ minDate: +1, maxDate: "+1M" });
+	} );
+</script>
+</head>
+<body>
+	<p>
+		<label for="startDate">날짜선택</label>
+		<input type="text" name="startDate" id="startDate">
+		</p>
+</body>
+</html>
