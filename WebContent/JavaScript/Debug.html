@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug</title>    
+    <script>
+        // 크롬 브라우저로 디버깅(F12)하기
+        /*
+        1) 콘솔(Console) 패널을 이용한 디버깅
+        2) 소스(Source) 패널을 이용한 디버깅
+        3) 소스 패널의 중단점(BreakPoints)을 이용한 디버깅
+            - F11누르면 한 줄씩 실행
+            - F8 누르면 전체 실행
+        4) 소스 패널의 중단점과 Watch를 이용한 변수 체크
+            - 소스 패널의 중단점을 등록하고, Watch 탭의 +버튼을 눌러 변수를 등록
+        */
+        var num1 = 100, num2 = 200, num3;
+        var txt1 = "hello", txt2 = "javascript";
+
+        document.write(num1+num2, "<br />");
+        document.write(txt1, "<br />");
+        document.writ(txt2);
+    </script>
+</head>
+<body>
+</body>
+</html>
